@@ -1,0 +1,111 @@
+body {
+  font-family: 'futura', sans-serif;
+  font-size: 14px;
+  margin: 0
+}
+
+h1 {
+  font-size: 28px;
+}
+
+#card-header {
+  background-color: #343A40;
+  padding: 10px;
+  color: #FFFFFF;
+}
+
+#card-breadcrumb {
+  margin-top: 30px;
+  font-size: 12px;
+}
+
+#card-libelle {
+  border-top: 1px solid #F2F2F2;
+  border-bottom: 1px solid #F2F2F2;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  font-weight: 700;
+}
+
+.card-product {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #F2F2F2;
+  background-color: #fcfcfc;
+}
+
+#card-total{
+  border-bottom: 1px solid #F2F2F2;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  font-weight: 700;
+}
+
+#card-checkout {
+  padding-top: 7px;
+  margin-bottom: 70px;
+}
+
+.bike-picture {
+  width: 170px;
+}
+
+
+#shop-header {
+  background-color: #343A40;
+  color: #FFFFFF;
+}
+
+#logo-header {
+  width: 50px;
+}
+
+#shop-background {
+  height: 150px;
+  background-image: url('/images/bike-background.jpg');
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 30px;
+}
+
+.shop-price {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.bike-card {
+  margin-bottom: 15px;
+}
+
+.login{
+  position: absolute;
+  top: 20px;
+  right: 20px
+}
+
+.navbar{
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+span#error{
+  position: absolute;
+  right: 430px;
+  top: 5px;
+  white-space: nowrap;
+
+}
+
+span#title{
+  position: absolute;
+  left:70px;
+  top: 16px;
+  font-size: 20px;
+}
+
+h1{
+  font-size: 60px;
+  text-align: center;
+  margin: 30px;
+}

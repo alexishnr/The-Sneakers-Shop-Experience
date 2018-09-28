@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://use.fontawesome.com/a7ec7986bf.js"></script>
+</head>
+<body>
+  <div class="row" id="shop-header">
+    <div class="col-12 navbar">
+      <a href="."><img id="logo-header" href='index.html' src="/images/bike-logo.svg" alt=""><a>
+        <span id="title">The Bike Shop Experience</span>
+        <% if (isLoggedIn != true) { %>
+          <div class="login">
+            <form class="" action="/login" method="post">
+              <input type="text" name="email" value="test@test.fr" placeholder="email">
+              <input type="password" name="password" value="test" placeholder="password">
+              <button class="btn btn-outline-info btn-sm" type="submit" name="button">OK</button>
+            </form>
+            <span id='error'>Click OK to connect</span>
+            <% } else { %>
+              <form  action="/logout" method="get">
+                <button class="btn btn-outline-info btn-sm" type="submit" action="/logout" name="button">Déconnexion</button>
+              </form>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" id="shop-background">
+        </div>
+        <h1>The Bike Shop</h1>
+        <div class="container">
+          <div class="row">
+            <%
+            for(var i=0; i<dataBike.length; i++) {
+              %>
+              <div class="col-12 col-sm-6 col-md-4 bike-card">
+                <div class="card text-center">
+                  <img class="card-img-top" src="<%=dataBike[i].url %>">
+                  <div class="card-body">
+                    <h5 class="card-title"><%=dataBike[i].name %></h5>
+                    <span class="shop-price"><%=dataBike[i].price %> €</span>
+
+                    <form action="/add-card" method="POST">
+                      <input type="hidden" name="url" value="<%=dataBike[i].url %>">
+                      <input type="hidden" name="name" value="<%=dataBike[i].name %>">
+                      <input type="hidden" name="price" value="<%=dataBike[i].price %>">
+                      <input type="hidden" name="quantity" value="1">
+                      <% if (isLoggedIn == true) { %>
+                        <button style='margin:10px' class="btn btn-outline-info btn-sm">Buy</button>
+                        <% } else { %>
+                          <button disabled class="btn btn-outline-info btn-sm">Please connect</button>
+                          <% } %>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <%
+                }
+                %>
+              </div>
+            </div>
+          </div>
+        </body>
+        </html>

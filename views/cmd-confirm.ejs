@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://use.fontawesome.com/a7ec7986bf.js"></script>
+</head>
+<body>
+  <div class="row" id="shop-header">
+    <div class="col-12 navbar">
+      <a href="."><img id="logo-header" href='index.html' src="/images/bike-logo.svg" alt=""><a>
+        <span id="title">The Bike Shop Experience</span>
+        <% if (isLoggedIn != true) { %>
+          <div class="login">
+            <form class="" action="/login" method="post">
+              <input type="text" name="email" value="" placeholder="email">
+              <input type="text" name="password" value="" placeholder="password">
+              <button class="btn btn-outline-info btn-sm" type="submit" name="button">OK</button>
+            </form>
+            <% } else { %>
+              <form  action="/logout" method="get">
+                <button class="btn btn-outline-info btn-sm" type="submit" action="/logout" name="button">Déconnexion</button>
+              </form>
+              <% } %>
+            </div>
+            <span id="error"><%= error %></span>
+          </div>
+        </div>
+        <div class="row" id="shop-background">
+        </div>
+        <h1>Command Confirmation</h1>
+        <h3 class='text-center'>Thank you for your purchase. See you soon !</h3>
+  </body>
+</html>
