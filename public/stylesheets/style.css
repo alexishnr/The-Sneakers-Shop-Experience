@@ -91,7 +91,7 @@ h1 {
 
 span#error{
   position: absolute;
-  right: 430px;
+  right: 530px;
   top: 5px;
   white-space: nowrap;
 
@@ -108,4 +108,10 @@ h1{
   font-size: 60px;
   text-align: center;
   margin: 30px;
+}
+
+.bodyForm{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

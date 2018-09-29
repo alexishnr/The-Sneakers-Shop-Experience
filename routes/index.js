@@ -1,10 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var stripe = require("stripe")("sk_test_NMLoQQsb04c88UkrbPQWVo7h");
-
+var mongoose= require('mongoose');
 var isLoggedIn = false;
-
-
 var email;
 var password;
 var error;
@@ -12,6 +10,35 @@ var error;
 var validEmail = 'test@test.fr';
 var validPassword = 'test';
 
+
+// MONGOOSE CONNECT //
+var options = { server: { socketOptions: {connectTimeoutMS: 5000 } }};
+mongoose.connect('mongodb://alhnr:alexis95@ds115613.mlab.com:15613/bike-shop',
+    options,
+    function(err) {
+     console.log(err);
+    }
+);
+///////////////
+
+// MONGOOSE SCHEMAS //
+var bikeSchema = mongoose.Schema({
+    name: String,
+    url: String,
+    price: Number
+});
+
+var userSchema = mongoose.Schema({
+    username: String,
+    email: String,
+    password: String,
+});
+/////////////
+
+// MONGOOSE MODELS //
+var bikeModel = mongoose.model('bikes', bikeSchema);
+var UserModel = mongoose.model('users', userSchema);
+/////////////
 
 var dataBike = [
                   {name: "Model BIKO45", url:"/images/bike-1.jpg", price: 679},
@@ -30,7 +57,15 @@ if (req.session.dataCardBike == undefined) {
   req.session.dataCardBike = [];
 }
 
+
+
   res.render('index', {dataBike: dataBike, isLoggedIn, error});
+});
+
+router.get('/login', function(req, res, next) {
+
+
+  res.render('login', {dataBike: dataBike, isLoggedIn, error});
 });
 
 router.post('/add-card', function(req, res, next) {
@@ -59,17 +94,38 @@ router.post('/login', function(req, res, next) {
   req.session.email = req.body.email;
   req.session.password = req.body.password;
 
-  if (req.body.email == validEmail && req.body.password == validPassword){
-    isLoggedIn = true;
-    console.log(isLoggedIn);
-    res.render('index', {dataBike, isLoggedIn, error});
+  UserModel.find(
+      { email: req.body.email, password: req.body.password } ,
+      function (err, users) {
+          console.log(users);
+          if (!users.length>0) {
+            req.session.error= 'Votre identifiant et/ou votre mot de passe est érroné, veuillez réessayer.'
+            res.render('index', {dataBike, isLoggedIn, error:req.session.error});
+          }else {
+            req.session.user = users[0];
+            isLoggedIn = true;
+            console.log(users);
+            res.render('index', {dataBike, isLoggedIn, error:req.session.error});
+          }
+      }
+  )
 
-  }else {
-    console.log(isLoggedIn);
-    var error = 'Votre identifiant et/ou votre mot de passe est érroné, veuillez réessayer.'
-    res.render('index', {dataBike, isLoggedIn, error});
-  }
+});
 
+// INSCRIPTION EN DB //
+router.post('/signup', function(req, res, next) {
+
+  var newUser = new UserModel ({
+   Username: req.body.username,
+   email: req.body.email,
+   password: req.body.password
+  });
+  newUser.save(
+    function (error, user) {
+       console.log(user);
+    }
+);
+  res.render('index', { dataCardBike:req.session.dataCardBike, email: req.session.email, password: req.session.password, isLoggedIn, dataBike, error:req.session.error });
 });
 
 router.get('/logout', function(req, res, next) {
