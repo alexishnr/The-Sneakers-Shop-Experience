@@ -59,34 +59,34 @@ if (req.session.dataCardBike == undefined) {
 
 
 
-  res.render('index', {dataBike: dataBike, isLoggedIn, error});
+  res.render('index', {dataBike: dataBike, isLoggedIn: req.session.isLoggedIn, error});
 });
 
 router.get('/login', function(req, res, next) {
 
 
-  res.render('login', {dataBike: dataBike, isLoggedIn, error});
+  res.render('login', {dataBike: dataBike, isLoggedIn: req.session.isLoggedIn, error});
 });
 
 router.post('/add-card', function(req, res, next) {
   req.session.dataCardBike.push(req.body);
-  res.render('card', { dataCardBike: req.session.dataCardBike, isLoggedIn });
+  res.render('card', { dataCardBike: req.session.dataCardBike, isLoggedIn: req.session.isLoggedIn });
 })
 
 router.post('/update-card', function(req, res, next) {
   console.log(req.body);
   req.session.dataCardBike[req.body.position].quantity = req.body.quantity;
-  res.render('card', { dataCardBike: req.session.dataCardBike, isLoggedIn });
+  res.render('card', { dataCardBike: req.session.dataCardBike, isLoggedIn: req.session.isLoggedIn });
 })
 
 router.get('/delete-card', function(req, res, next) {
   console.log(req.body);
   req.session.dataCardBike.splice(req.query.position, 1);
-  res.render('card', { dataCardBike: req.session.dataCardBike, isLoggedIn });
+  res.render('card', { dataCardBike: req.session.dataCardBike, isLoggedIn:req.session.isLoggedIn });
 })
 
 router.get('/card', function(req, res, next) {
-  res.render('card', { dataCardBike, email: req.session.email, password: req.session.password, isLoggedIn });
+  res.render('card', { dataCardBike, email: req.session.email, password: req.session.password, isLoggedIn: req.session.isLoggedIn });
 });
 
 router.post('/login', function(req, res, next) {
@@ -100,12 +100,12 @@ router.post('/login', function(req, res, next) {
           console.log(users);
           if (!users.length>0) {
             req.session.error= 'Votre identifiant et/ou votre mot de passe est érroné, veuillez réessayer.'
-            res.render('index', {dataBike, isLoggedIn, error:req.session.error});
+            res.render('index', {dataBike, isLoggedIn: req.session.isLoggedIn, error:req.session.error});
           }else {
             req.session.user = users[0];
-            isLoggedIn = true;
+            req.session.isLoggedIn = true;
             console.log(users);
-            res.render('index', {dataBike, isLoggedIn, error:req.session.error});
+            res.render('index', {dataBike, isLoggedIn: req.session.isLoggedIn, error:req.session.error});
           }
       }
   )
@@ -120,17 +120,22 @@ router.post('/signup', function(req, res, next) {
    email: req.body.email,
    password: req.body.password
   });
+
   newUser.save(
     function (error, user) {
        console.log(user);
     }
 );
-  res.render('index', { dataCardBike:req.session.dataCardBike, email: req.session.email, password: req.session.password, isLoggedIn, dataBike, error:req.session.error });
+console.log(isLoggedIn,'ici');
+req.session.isLoggedIn = true;
+
+
+  res.render('index', { dataCardBike:req.session.dataCardBike, email: req.session.email, password: req.session.password, dataBike, error:req.session.error, isLoggedIn: req.session.isLoggedIn });
 });
 
 router.get('/logout', function(req, res, next) {
-  isLoggedIn = false;
-  res.render('index', { dataCardBike: req.session.dataCardBike, isLoggedIn, dataBike, error });
+  req.session.isLoggedIn = false;
+  res.render('index', { dataCardBike: req.session.dataCardBike, isLoggedIn: req.session.isLoggedIn, dataBike, error });
 });
 
 router.post('/checkout', function(req, res, next) {
@@ -162,7 +167,7 @@ router.post('/checkout', function(req, res, next) {
       customer: customer.id,
       metadata: productList
     }))
-  .then(charge => res.render("cmd-confirm",{isLoggedIn, error}));
+  .then(charge => res.render("cmd-confirm",{isLoggedIn: req.session.isLoggedIn, error}));
 });
 
 
