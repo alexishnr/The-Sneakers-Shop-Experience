@@ -10,25 +10,16 @@
 <body>
   <div class="row" id="shop-header">
     <div class="col-12 navbar">
-      <a href="."><img id="logo-header" href='index.html' src="/images/bike-logo.svg" alt=""><a>
-        <span id="title">The Bike Shop Experience</span>
-        <% if (isLoggedIn != true) { %>
+      <a href="." style="font-size:35px; margin-left:10px">👟<a>
+        <span id="title">The Sneakers Shop Experience</span>
+        <% if (isLoggedIn == true) { %>
           <div class="login">
-            <form class="" action="/login" method="post">
-              <input type="text" name="email" value="" placeholder="email">
-              <input type="password" name="password" value="" placeholder="password">
-              <button class="btn btn-outline-info btn-sm" type="submit" name="button">OK</button>
+            <form  action="/logout" method="get">
+              <button id='logoutButton' class="btn btn-outline-info btn-sm" type="submit" action="/logout" name="button">Déconnexion</button>
             </form>
-            <% } else { %>
-              <form  action="/logout" method="get">
-                <button class="btn btn-outline-info btn-sm" type="submit" action="/logout" name="button">Déconnexion</button>
-              </form>
               <% } %>
             </div>
           </div>
-        </div>
-
-        <div class="row" id="shop-background">
         </div>
         <nav id="card-breadcrumb" aria-label="breadcrumb">
           <ol class="breadcrumb">
@@ -36,7 +27,6 @@
             <li class="breadcrumb-item active" aria-current="page">Basket</li>
           </ol>
         </nav>
-
         <h1>Basket</h1>
         <div class="container">
           <div class="row" id="card-libelle">
@@ -49,18 +39,17 @@
           </div>
           <%
           var totalCmd = 0;
-          for(var i=0; i<dataCardBike.length; i++) {
-            totalCmd = totalCmd + (dataCardBike[i].price*dataCardBike[i].quantity);
+          for(var i=0; i<dataCardSneakers.length; i++) {
+            totalCmd = totalCmd + (dataCardSneakers[i].price*dataCardSneakers[i].quantity);
             %>
             <div class="row card-product">
-              <div class="col-5 col-sm-3"><img class="bike-picture" src="<%=dataCardBike[i].url%>"></div>
-              <div class="col-4 d-none d-sm-block"><p><%=dataCardBike[i].name%></p></div>
+              <div class="col-5 col-sm-3"><img class="bike-picture" src="<%=dataCardSneakers[i].url%>"></div>
+              <div class="col-4 d-none d-sm-block"><p><%=dataCardSneakers[i].name%></p></div>
               <div class="col-3 col-sm-2">
-
                 <form action="/update-card" method="POST">
                   <div class="row">
                     <div class="col-8">
-                      <input type="text" name="quantity" value="<%=dataCardBike[i].quantity%>" class="form-control form-control-sm">
+                      <input type="text" name="quantity" value="<%=dataCardSneakers[i].quantity%>" class="form-control form-control-sm">
                       <input type="hidden" name="position" value="<%=i%>" class="form-control form-control-sm">
                     </div>
                     <div class="col-4">
@@ -68,13 +57,11 @@
                     </div>
                   </div>
                 </form>
-
               </div>
-              <div class="col-2 col-sm-1"><%=dataCardBike[i].price%>€</div>
-              <div class="col-1 d-none d-sm-block"><%=dataCardBike[i].price*dataCardBike[i].quantity%>€</div>
+              <div class="col-2 col-sm-1"><%=dataCardSneakers[i].price%>€</div>
+              <div class="col-1 d-none d-sm-block"><%=dataCardSneakers[i].price*dataCardSneakers[i].quantity%>€</div>
               <div class="col-2 col-sm-1">
                 <a href="/delete-card?position=<%=i%>" class="btn btn-outline-info btn-sm" name="button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-
               </div>
             </div>
             <%
@@ -87,21 +74,42 @@
           <div class="row" id="card-checkout">
             <div class="col-12 text-right">
               <form action="/checkout" method="POST">
-                <script
-                src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="pk_test_9vZMqIVxzc6wyoXbahJHfNyr"
-                data-amount= "<%=totalCmd*100%>"
-                data-name="The Bike Shop"
-                data-description="Widget"
-                data-image="/images/bike-logo.svg"
-                data-locale="auto"
-                data-currency="eur"
-                data-shipping-address="true">
-                </script>
+                  <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_9vZMqIVxzc6wyoXbahJHfNyr"
+                  data-amount= "<%=totalCmd*100%>"
+                  data-name="The Sneakers Shop"
+                  data-description="Widget"
+                  data-image=""
+                  data-locale="auto"
+                  data-currency="eur"
+                  data-shipping-address="true">
+                  </script>
               </form>
             </div>
           </div>
         </div>
       </div>
+      <% if(dataCardSneakers.length>1){%>
+        <footer>
+          <div class="column width-12 center">
+           <h4 id="titleFooter1">Thank you for coming and visiting my fictional Sneaker Shop.</h4>
+         </div>
+         <div>
+           <span id="titleFooter">The Seakers Shop Experience</span>
+         </div>
+        </footer>
+      <%}else{%>
+        <footer id="loginFooter">
+            <div class="column width-12 center">
+             <h4 id="titleFooter1">Thank you for coming and visiting my fictional Sneaker Shop.</h4>
+           </div>
+           <div>
+             <span id="titleFooter">The Seakers Shop Experience</span>
+           </div>
+        </footer>
+        <%
+      }%>
+
     </body>
     </html>

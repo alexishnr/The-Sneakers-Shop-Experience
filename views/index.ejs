@@ -12,54 +12,42 @@
 <body>
   <div class="row" id="shop-header">
     <div class="col-12 navbar">
-      <a href="."><img id="logo-header" href='index.html' src="/images/bike-logo.svg" alt=""><a>
-        <span id="title">The Bike Shop Experience</span>
+      <a href="." style="font-size:35px; margin-left:10px">👟<a>
+        <span id="title">The Sneakers Shop Experience</span>
         <% if (isLoggedIn != true) { %>
           <div class="login" style='display:flex'>
             <form class="" action="/login" method="get">
-              <button class="btn btn-info btn-sm" style='margin-right: 15px' type="submit" name="button">Sign Up</button>
+              <button class="btn btn-info btn-sm" style='margin-right: 15px' type="submit" name="button">Sign In / Sign Up</button>
             </form>
-            <form class="" action="/login" method="post">
-              <input type="text" name="email" value="" placeholder="email">
-              <input type="password" name="password" value="" placeholder="password">
-              <button class="btn btn-outline-info btn-sm" type="submit" name="button">OK</button>
-            </form>
-            <span id='error'> <%= error %> </span>
             <% } else { %>
               <form  action="/logout" method="get">
-                <button class="btn btn-outline-info btn-sm" type="submit" action="/logout" name="button">Déconnexion</button>
+                <button id='logoutButton' class="btn btn-outline-info btn-sm" type="submit" action="/logout" name="button">Déconnexion</button>
               </form>
               <% } %>
             </div>
           </div>
         </div>
-
-        <div class="row" id="shop-background">
-        </div>
-        <h1>The Bike Shop</h1>
+        <div class="row" id="shop-background"></div>
+        <h1>The Sneakers Shop</h1>
         <div class="container">
           <div class="row">
             <%
-            for(var i=0; i<dataBike.length; i++) {
+            for(var i=0; i<dataSneakers.length; i++) {
               %>
               <div class="col-12 col-sm-6 col-md-4 bike-card">
                 <div class="card text-center">
-                  <img class="card-img-top" src="<%=dataBike[i].url %>">
+                  <img class="card-img-top" src="<%=dataSneakers[i].url %>">
                   <div class="card-body">
-                    <h5 class="card-title"><%=dataBike[i].name %></h5>
-                    <span class="shop-price"><%=dataBike[i].price %> €</span>
-
-                    <form action="/add-card" method="POST">
-                      <input type="hidden" name="url" value="<%=dataBike[i].url %>">
-                      <input type="hidden" name="name" value="<%=dataBike[i].name %>">
-                      <input type="hidden" name="price" value="<%=dataBike[i].price %>">
+                    <h5 class="card-title"><%=dataSneakers[i].name %></h5>
+                    <span class="shop-price"><%=dataSneakers[i].price %> €</span>
+                    <form action="/see-more" method="POST">
+                      <input type="hidden" name="url" value="<%=dataSneakers[i].url %>">
+                      <input type="hidden" name="name" value="<%=dataSneakers[i].name %>">
+                      <input type="hidden" name="price" value="<%=dataSneakers[i].price %>">
+                      <input type="hidden" name="resume" value="<%=dataSneakers[i].resume %>">
                       <input type="hidden" name="quantity" value="1">
-                      <% if (isLoggedIn == true) { %>
-                        <button style='margin:10px' class="btn btn-outline-info btn-sm">Buy</button>
-                        <% } else { %>
-                          <button disabled style='margin:10px' class="btn btn-outline-info btn-sm">Please connect</button>
-                          <% } %>
-                        </form>
+                        <button style='margin:10px' class="btn btn-outline-info btn-sm">See more</button>
+                      </form>
                       </div>
                     </div>
                   </div>
@@ -69,5 +57,13 @@
               </div>
             </div>
           </div>
+          <footer>
+            <div class="column width-12 center">
+					   <h4 id="titleFooter1">Thank you for coming and visiting my fictional Sneaker Shop.</h4>
+				   </div>
+           <div>
+             <span id="titleFooter">The Seakers Shop Experience</span>
+           </div>
+          </footer>
         </body>
         </html>

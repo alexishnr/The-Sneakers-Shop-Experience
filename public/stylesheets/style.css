@@ -50,6 +50,10 @@ h1 {
   width: 170px;
 }
 
+.card-img-top{
+  height: 217px;
+  width: 348px;
+}
 
 #shop-header {
   background-color: #343A40;
@@ -58,13 +62,13 @@ h1 {
 
 #logo-header {
   width: 50px;
-} n  
+}
 
 #shop-background {
-  height: 150px;
-  background-image: url('/images/bike-background.jpg');
+  height: 250px;
+  background-image: url('/images/background3.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: top 78% center;
   margin-bottom: 30px;
 }
 
@@ -89,13 +93,18 @@ h1 {
   align-items: center;
 }
 
-span#error{
-  position: absolute;
-  right: 530px;
-  top: 5px;
+span.error{
+  text-align: center;
   white-space: nowrap;
-
+  margin: auto;
 }
+
+div.errorDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 span#title{
   position: absolute;
@@ -114,4 +123,65 @@ h1{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+img.seeMoreImg{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+div.seeMorePart{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+p.seeMoreText{
+  text-align: center;
+  margin:30px
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+footer#loginFooter{
+  background-color: #343A40;
+  height:150px;
+  margin-top: 100px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+footer{
+  background-color: #343A40;
+  height:150px;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+span#titleFooter{
+  color:#FFF;
+  font-size: 12px;
+}
+
+h4#titleFooter1{
+  color:#FFF;
+  margin-bottom: 30px;
+}
+
+button#logoutButton{
+  margin-right: 10px;
 }

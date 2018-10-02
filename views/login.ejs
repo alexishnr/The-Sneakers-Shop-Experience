@@ -10,25 +10,16 @@
 <body>
   <div class="row" id="shop-header">
     <div class="col-12 navbar">
-      <a href="."><img id="logo-header" href='index.html' src="/images/bike-logo.svg" alt=""><a>
-        <span id="title">The Bike Shop Experience</span>
-        <% if (isLoggedIn != true) { %>
+      <a href="." style="font-size:35px; margin-left:10px">👟<a>
+        <span id="title">The Sneakers Shop Experience</span>
+        <% if (isLoggedIn == true) { %>
           <div class="login">
-            <form class="" action="/login" method="post">
-              <input type="text" name="email" value="" placeholder="email">
-              <input type="text" name="password" value="" placeholder="password">
-              <button class="btn btn-outline-info btn-sm" type="submit" name="button">OK</button>
+            <form  action="/logout" method="get">
+              <button class="btn btn-outline-info btn-sm" type="submit" action="/logout" name="button">Déconnexion</button>
             </form>
-            <% } else { %>
-              <form  action="/logout" method="get">
-                <button class="btn btn-outline-info btn-sm" type="submit" action="/logout" name="button">Déconnexion</button>
-              </form>
-              <% } %>
             </div>
-            <span id="error"><%= error %></span>
+            <% } %>
           </div>
-        </div>
-        <div class="row" id="shop-background">
         </div>
         <h1>Sign Up</h1>
         <div class="bodyForm">
@@ -46,8 +37,24 @@
               <label for="exampleInputPassword1">Password</label>
               <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
             </div>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
-          </form>
+            <div style="display:flex; margin-bottom: 15px;" class="buttons">
+              <button type="submit" style="margin-right:7px" class="btn btn-primary">Sign Up</button>
+            </form>
+            <form class="" action="/signIn" method="get">
+              <button type="submit" style="margin-left:7px" class="btn btn-secondary">You already have an account?</button>
+            </form>
+            </div>
         </div>
+        <div class="errorDiv col-12">
+          <span class="error"><%= error %></span>
+        </div>
+        <footer id="loginFooter">
+            <div class="column width-12 center">
+             <h4 id="titleFooter1">Thank you for coming and visiting my fictional Sneaker Shop.</h4>
+           </div>
+           <div>
+             <span id="titleFooter">The Seakers Shop Experience</span>
+           </div>
+        </footer>
       </body>
 </html>

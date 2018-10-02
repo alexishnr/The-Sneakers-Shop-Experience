@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://use.fontawesome.com/a7ec7986bf.js"></script>
+</head>
+<body>
+  <div class="row" id="shop-header">
+    <div class="col-12 navbar">
+      <a href="." style="font-size:35px; margin-left:10px">👟<a>
+        <span id="title">The Sneakers Shop Experience</span>
+        <% if (isLoggedIn != true) { %>
+          <div class="login" style='display:flex'>
+            <form class="" action="/login" method="get">
+              <button class="btn btn-info btn-sm" style='margin-right: 15px' type="submit" name="button">Sign In / Sign Up</button>
+            </form>
+            <span id='error'> <%= error %> </span>
+            <% } else { %>
+              <form  action="/logout" method="get">
+                <button id='logoutButton' class="btn btn-outline-info btn-sm" type="submit" action="/logout" name="button">Déconnexion</button>
+              </form>
+              <% } %>
+            </div>
+            </div>
+            </div>
+            <span id="error"><%= error %></span>
+          </div>
+        </div>
+        <div class="row" id="shop-background">
+        </div>
+        <div class="container">
+          <div class="row">
+
+        <div class="seeMorePart col-12">
+
+        <% for (i=0; i<seeMore.length; i++){%>
+          <h1 class="seeMoreTitle"><%=seeMore[i].name %></h1>
+          <img class="seeMoreImg col-8" src="<%=seeMore[i].url %>">
+          <h5 class="card-title">👟 <%=seeMore[i].name %></h5>
+          <p class="seeMoreText"><%=seeMore[i].resume %></p>
+          <span class="shop-price">💰 <%=seeMore[i].price %> €</span>
+          <form action="/add-card" method="POST">
+            <input type="hidden" name="url" value="<%=seeMore[i].url %>">
+            <input type="hidden" name="name" value="<%=seeMore[i].name %>">
+            <input type="hidden" name="price" value="<%=seeMore[i].price %>">
+            <input type="hidden" name="quantity" value="1">
+            <% if (isLoggedIn == true) { %>
+              <button style='margin:20px' class="btn btn-outline-info btn-sm">Buy</button>
+              <% } else { %>
+                <button disabled style='margin:20px' class="btn btn-outline-info btn-sm">Please login to buy</button>
+                <% } %>
+              </form>
+          <%  } %>
+        </div>
+    </div>
+  </div>
+  <footer>
+    <div class="column width-12 center">
+     <h4 id="titleFooter1">Thank you for coming and visiting my fictional Sneaker Shop.</h4>
+   </div>
+   <div>
+     <span id="titleFooter">The Seakers Shop Experience</span>
+   </div>
+  </footer>
+</body>
+</html>
