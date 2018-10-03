@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+  <meta name= viewport content= width=device-width initial-scale=1>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="/stylesheets/style.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
@@ -29,7 +30,7 @@
             <span id="error"><%= error %></span>
           </div>
         </div>
-        <div class="row" id="shop-background">
+        <div id="shop-background">
         </div>
         <div class="container">
           <div class="row">
@@ -38,7 +39,7 @@
 
         <% for (i=0; i<seeMore.length; i++){%>
           <h1 class="seeMoreTitle"><%=seeMore[i].name %></h1>
-          <img class="seeMoreImg col-8" src="<%=seeMore[i].url %>">
+          <img class="seeMoreImg" src="<%=seeMore[i].url %>">
           <h5 class="card-title">👟 <%=seeMore[i].name %></h5>
           <p class="seeMoreText"><%=seeMore[i].resume %></p>
           <span class="shop-price">💰 <%=seeMore[i].price %> €</span>

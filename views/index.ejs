@@ -2,11 +2,12 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name=viewport content= width=device-width initial-scale=1>
   <title></title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="/stylesheets/style.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   <script src="https://use.fontawesome.com/a7ec7986bf.js"></script>
 </head>
 <body>
@@ -27,15 +28,16 @@
             </div>
           </div>
         </div>
-        <div class="row" id="shop-background"></div>
+        <div id="shop-background"></div>
         <h1>The Sneakers Shop</h1>
         <div class="container">
           <div class="row">
+
             <%
             for(var i=0; i<dataSneakers.length; i++) {
               %>
-              <div class="col-12 col-sm-6 col-md-4 bike-card">
-                <div class="card text-center">
+                <div class="bike-card col-10 col-md-10 col-lg-4">
+                <div class="card text-center ">
                   <img class="card-img-top" src="<%=dataSneakers[i].url %>">
                   <div class="card-body">
                     <h5 class="card-title"><%=dataSneakers[i].name %></h5>
@@ -56,7 +58,6 @@
                 %>
               </div>
             </div>
-          </div>
           <footer>
             <div class="column width-12 center">
 					   <h4 id="titleFooter1">Thank you for coming and visiting my fictional Sneaker Shop.</h4>
