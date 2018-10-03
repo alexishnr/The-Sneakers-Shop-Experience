@@ -74,6 +74,16 @@ h1 {
   margin-top: 70px
 }
 
+#shop-background-seeMore {
+  height: 60vh;
+  background-image: url('/images/background32.jpg');
+  background-size: cover;
+  background-position: top 78% center;
+  margin-bottom: 30px;
+  width: 100vw;
+  margin-top: 70px
+}
+
 .shop-price {
   font-size: 16px;
   font-weight: 700;
@@ -151,7 +161,7 @@ div.seeMorePart{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 0px;
 }
 
 p.seeMoreText{
