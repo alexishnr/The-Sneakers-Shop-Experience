@@ -11,12 +11,12 @@
 <body>
   <div class="row" id="shop-header">
     <div class="col-12 navbar">
-      <a href="." style="font-size:35px; margin-left:10px">👟<a>
+      <a id="logo" href="." style="font-size:35px">👟<a>
         <span id="title">The Sneakers Shop Experience</span>
         <% if (isLoggedIn == true) { %>
           <div class="login">
             <form  action="/logout" method="get">
-              <button id='logoutButton' class="btn btn-outline-info btn-sm" type="submit" action="/logout" name="button">Déconnexion</button>
+              <button id='logoutButton' class="btn btn-outline-info btn-sm logout" type="submit" action="/logout" name="button">Déconnexion</button>
             </form>
               <% } %>
             </div>
@@ -31,12 +31,12 @@
         <h1>Basket</h1>
         <div class="container">
           <div class="row" id="card-libelle">
-            <div class="col-5 col-sm-3">Picture</div>
+            <div class="col-6 col-sm-3">Picture</div>
             <div class="col-4 d-none d-sm-block">Model</div>
             <div class="col-3 col-sm-2">Quantity</div>
             <div class="col-2 col-sm-1">Price</div>
             <div class="col-1 d-none d-sm-block">Total</div>
-            <div class="col-2 col-sm-1">Suppr</div>
+            <div class="d-none d-sm-block">Suppr</div>
           </div>
           <%
           var totalCmd = 0;
@@ -44,7 +44,7 @@
             totalCmd = totalCmd + (dataCardSneakers[i].price*dataCardSneakers[i].quantity);
             %>
             <div class="row card-product">
-              <div class="col-5 col-sm-3"><img class="bike-picture" src="<%=dataCardSneakers[i].url%>"></div>
+              <div class="col-6 col-sm-3"><img class="bike-picture" src="<%=dataCardSneakers[i].url%>"></div>
               <div class="col-4 d-none d-sm-block"><p><%=dataCardSneakers[i].name%></p></div>
               <div class="col-3 col-sm-2">
                 <form action="/update-card" method="POST">
@@ -54,15 +54,15 @@
                       <input type="hidden" name="position" value="<%=i%>" class="form-control form-control-sm">
                     </div>
                     <div class="col-4">
-                      <button class="btn btn-outline-info btn-sm" name="button"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                      <button class="btn btn-outline-info btn-sm refreshButton" name="button"><i class="fa fa-refresh" aria-hidden="true"></i></button>
                     </div>
                   </div>
                 </form>
               </div>
               <div class="col-2 col-sm-1"><%=dataCardSneakers[i].price%>€</div>
               <div class="col-1 d-none d-sm-block"><%=dataCardSneakers[i].price*dataCardSneakers[i].quantity%>€</div>
-              <div class="col-2 col-sm-1">
-                <a href="/delete-card?position=<%=i%>" class="btn btn-outline-info btn-sm" name="button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+              <div class="col-1 col-sm-1">
+                <a href="/delete-card?position=<%=i%>" class="btn btn-outline-info btn-sm trashButton" name="button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
               </div>
             </div>
             <%
@@ -106,7 +106,7 @@
              <h4 id="titleFooter1">Thank you for coming and visiting my fictional Sneaker Shop.</h4>
            </div>
            <div>
-             <span id="titleFooter">The Seakers Shop Experience</span>
+             <span id="titleFooter">The Sneakers Shop Experience</span>
            </div>
         </footer>
         <%

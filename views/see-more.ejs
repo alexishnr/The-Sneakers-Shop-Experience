@@ -11,12 +11,12 @@
 <body>
   <div class="row" id="shop-header">
     <div class="col-12 navbar">
-      <a href="." style="font-size:35px; margin-left:10px">👟<a>
+      <a id="logo" href="." style="font-size:35px">👟<a>
         <span id="title">The Sneakers Shop Experience</span>
         <% if (isLoggedIn != true) { %>
           <div class="login" style='display:flex'>
             <form class="" action="/login" method="get">
-              <button class="btn btn-info btn-sm" style='margin-right: 15px' type="submit" name="button">Sign In / Sign Up</button>
+              <button class="btn btn-info btn-sm logout" style='margin-right: 15px' type="submit" name="button">Sign In / Sign Up</button>
             </form>
             <span id='error'> <%= error %> </span>
             <% } else { %>
@@ -63,7 +63,7 @@
      <h4 id="titleFooter1">Thank you for coming and visiting my fictional Sneaker Shop.</h4>
    </div>
    <div>
-     <span id="titleFooter">The Seakers Shop Experience</span>
+     <span id="titleFooter">The Sneakers Shop Experience</span>
    </div>
   </footer>
 </body>

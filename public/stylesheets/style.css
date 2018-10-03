@@ -128,6 +128,10 @@ h1{
   margin: 30px;
 }
 
+h1.loginTitle{
+  margin-top: 100px;
+}
+
 .bodyForm{
   display: flex;
   justify-content: center;
@@ -193,9 +197,13 @@ h4#titleFooter1{
   text-align: center;
 }
 
-button#logoutButton{
-  margin-right: 10px;
+.cmdConfirm{
+  margin-top: 100px;
 }
+
+/* button#logoutButton{
+  margin-right: 10px;
+} */
 
 @media screen and (max-width: 900px) {
   /* footer{
@@ -212,5 +220,72 @@ button#logoutButton{
   } */
   span#title{
     font-size: 13px;
+  }
+  button.logout{
+    /* width: 100px; */
+    margin-right: -5px !important;
+  }
+  #logo{
+    margin-left: 10px !important;
+  }
+  .refreshButton{
+    margin-left: -25px !important;
+  }
+  .trashButton{
+    margin-left: -25px !important;
+  }
+  .cmdConfirm{
+    font-size: 40px;
+  }
+  .textCmdConfirm{
+    font-size: 30px;
+  }
+  #titleFooter1{
+    font-size: 20px;
+  }
+}
+
+
+@media screen and (max-width: 400px) {
+  /* footer{
+    background-color: #343A40;
+    height:150px;
+    margin-top: 100px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  } */
+  span#title{
+    font-size: 12px;
+    margin-left: -15px;
+  }
+  #logo{
+    margin-left: 0px !important;
+  }
+  button.logout{
+    /* width: 100px; */
+    margin-right: -10px !important;
+  }
+  .refreshButton{
+    margin-left: -25px !important;
+  }
+  .trashButton{
+    margin-left: -18px !important;
+  }
+  .bodyForm{
+    margin-bottom: 30px !important;
+  }
+  .cmdConfirm{
+    font-size: 40px;
+  }
+  .textCmdConfirm{
+    font-size: 30px;
+  }
+  #titleFooter1{
+    font-size: 20px;
   }
 }
