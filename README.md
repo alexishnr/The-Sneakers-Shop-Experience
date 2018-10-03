@@ -1,4 +1,5 @@
-# The-Bike-Shop
+# The-Sneakers-Shop-Experience
+
 Un sneakers shop fictif réalisé en Node.js avec Express.
 
 La base de données à été faite avec MongoDB et Mongoose.
