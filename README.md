@@ -8,7 +8,7 @@ Liste des fonctionnalités:
 - Lister une liste de produits envoyée depuis le backend.
 - Se connecter ou s'inscrire avec gestion des erreurs liées aux contraintes imposées par le backend.
 - Création d'une session utilisateur.
-- Se déconnecter ainsi qu'une destruction de la session en cours.
+- Se déconnecter entraînant une destruction de la session en cours.
 - Cryptage du mot de passe utilisateur en base de données avec CryptoJS.
 - Ajout d'un produit au panier.
 - Mise à jour du panier en fonction de la quantité choisie.
