@@ -15,6 +15,3 @@ Liste des fonctionnalités:
 - Suppression d'un article avec mise à jour du panier total.
 - Paiement via Stripe.
 
-site visible sur https://rocky-depths-85440.herokuapp.com/
-
-Bonne visite =)
